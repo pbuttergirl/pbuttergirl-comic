@@ -1,4 +1,4 @@
-import Home from "./index";
+import Home from "../pages/index";
 
 export const HomeDefault = () => <Home />;
 
