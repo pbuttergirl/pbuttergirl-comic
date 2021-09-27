@@ -4,5 +4,9 @@ export type TextComponentProps = {
 
 export const Text = (props: TextComponentProps) => {
   const { title } = props;
-  return <div className={"text-6xl"}>{title}</div>;
+  return (
+    <div role="heading" className={"text-6xl"}>
+      {title}
+    </div>
+  );
 };
