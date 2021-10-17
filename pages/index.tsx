@@ -5,6 +5,8 @@ import { ComicImage } from "../components/image";
 import { Navigation } from "../components/navigation";
 import { Text } from "../components/text";
 import styles from "../styles/Home.module.css";
+import { getEpisodes, groupFunction } from "../utils/episodes-handlers";
+import { GetServerSideProps } from "next";
 
 const Home: NextPage = () => {
   return (
@@ -19,6 +21,12 @@ const Home: NextPage = () => {
       <Navigation />
     </div>
   );
+};
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  return {
+    props: {},
+  };
 };
 
 export default Home;
