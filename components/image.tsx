@@ -4,7 +4,7 @@ export const ComicImage = () => {
   return (
     <div className={"m-4"}>
       <Image
-        src={"http://placekitten.com/g/800/570"}
+        src={"/episodes/episode-1/Episode1.png"}
         alt="Image of kitty"
         height={570}
         width={800}
