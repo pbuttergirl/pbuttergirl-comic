@@ -5,13 +5,15 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import Home from "../pages/index";
+import { getEpisodes } from "../utils/episodes-handlers";
 
 describe("Home", () => {
   it("renders a heading", () => {
-    render(<Home />);
+    const firstEpisode = getEpisodes()[0]["images"][0];
+    render(<Home name={"Episode x"} images={[firstEpisode]} />);
 
     const heading = screen.getByRole("heading", {
-      name: /Peanut butter girl comic/i,
+      name: /Episode x/i,
     });
 
     expect(heading).toBeInTheDocument();

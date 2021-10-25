@@ -4,7 +4,7 @@ import { groupBy } from "lodash";
 export type EpisodeType = ReturnType<typeof getEpisodes>[0];
 
 export function getEpisodes() {
-  const episodes = glob.sync(`./episodes/episode-*/*.png`);
+  const episodes = glob.sync("./episodes/episode-*/*.png");
   const groupedList = groupBy(episodes, groupFunction);
   const result = Object.entries(groupedList).map(([key, value]) => {
     return {
@@ -17,6 +17,5 @@ export function getEpisodes() {
 }
 
 export const groupFunction = (episodePath: string) => {
-  const result = episodePath.split("/")[2];
-  return result;
+  return episodePath.split("/")[2];
 };

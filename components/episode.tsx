@@ -1,5 +1,4 @@
 import React from "react";
-import { propTypes } from "react-bootstrap/esm/Image";
 import { EpisodeType } from "../utils/episodes-handlers";
 import { ComicImage } from "./image";
 import { Navigation } from "./navigation";
@@ -17,7 +16,7 @@ export const Episode = (props: EpisodeProps) => {
     <div className={"flex flex-col place-items-center m-5 gap-5"}>
       <Text title={title} />
       {images.map((image) => {
-        return <ComicImage imagePath={image} />;
+        return <ComicImage key={JSON.stringify(image)} imagePath={image} />;
       })}
       <Navigation />
     </div>

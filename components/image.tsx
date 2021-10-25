@@ -8,7 +8,7 @@ export const ComicImage = (props: ComicImageProps) => {
   const { imagePath } = props;
   return (
     <div className={"w-1/2"}>
-      <img src={imagePath} alt={"text of episode"} />
+      <img src={imagePath} alt={"Image of comic episode"} />
     </div>
   );
 };
