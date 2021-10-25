@@ -1,14 +1,14 @@
 import Image from "next/image";
 
-export const ComicImage = () => {
+export type ComicImageProps = {
+  imagePath: string;
+};
+
+export const ComicImage = (props: ComicImageProps) => {
+  const { imagePath } = props;
   return (
-    <div className={"m-4"}>
-      <Image
-        src={"/episodes/episode-1/Episode1.png"}
-        alt="Image of kitty"
-        height={570}
-        width={800}
-      />
+    <div className={"w-1/2"} data-testid="comic-image">
+      <img src={imagePath} alt={"Image of comic episode"} />
     </div>
   );
 };
