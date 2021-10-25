@@ -16,6 +16,9 @@ describe("Home", () => {
       name: /Episode x/i,
     });
 
+    const image = screen.getByTestId("comic-image");
+
     expect(heading).toBeInTheDocument();
+    expect(image).toBeInTheDocument();
   });
 });

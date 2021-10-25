@@ -7,7 +7,7 @@ export type ComicImageProps = {
 export const ComicImage = (props: ComicImageProps) => {
   const { imagePath } = props;
   return (
-    <div className={"w-1/2"}>
+    <div className={"w-1/2"} data-testid="comic-image">
       <img src={imagePath} alt={"Image of comic episode"} />
     </div>
   );
