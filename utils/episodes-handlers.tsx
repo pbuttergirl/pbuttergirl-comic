@@ -1,6 +1,8 @@
 import glob from "glob";
 import { groupBy } from "lodash";
 
+export type EpisodeType = ReturnType<typeof getEpisodes>[0];
+
 export function getEpisodes() {
   const episodes = glob.sync(`./episodes/episode-*/*.png`);
   const groupedList = groupBy(episodes, groupFunction);
