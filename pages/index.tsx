@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import React from "react";
-import { GetServerSideProps } from "next";
+import { GetStaticProps } from "next";
 import { Episode } from "../components/episode";
 import { EpisodeType, getEpisodes } from "../utils/episodes-handlers";
 
@@ -19,7 +19,7 @@ const Home: NextPage<EpisodeType> = (props) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getStaticProps: GetStaticProps = (context) => {
   const lastEpisode = getEpisodes().at(-1) || {};
   return {
     props: lastEpisode,
