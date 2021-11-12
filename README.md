@@ -4,7 +4,7 @@ Next.js application for comic hosted at https://www.pbuttergirl.com/.
 
 ### Installation
 
-You need [node.js](https://nodejs.org/en/) and [yarn](https://yarnpkg.com/) to run this project.
+You need [node.js](https://nodejs.org/en/) in version 16 and higher, and [yarn](https://yarnpkg.com/) to run this project.
 To install dependencies just run:
 
 ```bash
