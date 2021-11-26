@@ -44,5 +44,8 @@
     "sass": "^1.42.1",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "typescript": "4.4.3"
+  },
+  "engines": {
+    "node": ">= 16"
   }
 }
