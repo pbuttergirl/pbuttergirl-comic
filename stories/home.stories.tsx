@@ -1,10 +1,10 @@
-import Home from "../pages/index";
+import Home from '../pages/index';
 
 export const HomeDefault = () => (
-  <Home name={"Episode x"} images={["http://placekitten.com/g/800/570"]} />
+  <Home name={'Episode x'} images={['http://placekitten.com/g/800/570']} />
 );
 
 export default {
-  title: "Home",
+  title: 'Home',
   component: Home,
 };

@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from 'next/image';
 
 export type ComicImageProps = {
   imagePath: string;
@@ -7,8 +7,8 @@ export type ComicImageProps = {
 export const ComicImage = (props: ComicImageProps) => {
   const { imagePath } = props;
   return (
-    <div className={"w-1/2"} data-testid="comic-image">
-      <img src={imagePath} alt={"Image of comic episode"} />
+    <div className={'w-1/2'} data-testid="comic-image">
+      <img src={imagePath} alt={'Image of comic episode'} />
     </div>
   );
 };

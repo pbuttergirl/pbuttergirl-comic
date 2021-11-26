@@ -1,11 +1,11 @@
 import {
   ArrowCircleLeftIcon,
   ArrowCircleRightIcon,
-} from "@heroicons/react/solid";
+} from '@heroicons/react/solid';
 
 export const Navigation = () => {
   return (
-    <div className={"flex flex-row space-x-16"}>
+    <div className={'flex flex-row space-x-16'}>
       <div>
         <button>
           <ArrowCircleLeftIcon className="h-10 w-10 text-black-500" />
