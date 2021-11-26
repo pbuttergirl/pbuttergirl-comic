@@ -1,7 +1,7 @@
 module.exports = {
-  stories: ["../stories/**/*.stories.@(js|jsx|ts|tsx)"],
-  addons: ["@storybook/addon-links", "@storybook/addon-essentials"],
-  webpackFinal: (config) => {
+  stories: ['../stories/**/*.stories.@(js|jsx|ts|tsx)'],
+  addons: ['@storybook/addon-links', '@storybook/addon-essentials'],
+  webpackFinal: config => {
     // https://github.com/storybookjs/storybook/issues/4082#issuecomment-758272734
     config.node = {
       fs: 'empty',
@@ -11,6 +11,6 @@ module.exports = {
       console: true,
     };
 
-    return config
-  }
+    return config;
+  },
 };
