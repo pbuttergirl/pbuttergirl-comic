@@ -47,6 +47,14 @@ We are using `ESLint` to check quality of the code.
 yarn lint
 ```
 
+### Prettier
+
+To check if the code is correctly formatted, use `Prettier`.
+
+```bash
+yarn prettier-check
+```
+
 ### Development
 
 You can start development server and play around with the code.
