@@ -11,7 +11,7 @@ type NavigationProps = {
   currentEpisode: EpisodePageProps['currentEpisodeNumber'];
 };
 
-const PreviousEpisodePath = (number: number) => {
+const previousEpisodePath = (number: number) => {
   return `/episodes/${number - 1}`;
 };
 
@@ -28,7 +28,7 @@ export const Navigation = (props: NavigationProps) => {
     <div className={'flex flex-row space-x-16'}>
       <div>
         {!isFirstEpisode && (
-          <Link href={PreviousEpisodePath(currentEpisode)} passHref>
+          <Link href={previousEpisodePath(currentEpisode)} passHref>
             <a data-testid="left-arrow">
               <ArrowCircleLeftIcon className="h-10 w-10 text-black-500" />
             </a>
