@@ -1,5 +1,5 @@
 import React from 'react';
-import { HomeProps } from '../pages/episodes/[slug]';
+import { EpisodePageProps } from '../pages/episodes/[slug]';
 import { EpisodeType, getEpisodes } from '../utils/episodes-handlers';
 import { ComicImage } from './image';
 import { Navigation } from './navigation';
@@ -9,8 +9,8 @@ import { Text } from './text';
 export type EpisodeProps = {
   title: TextComponentProps['title'];
   images: EpisodeType['images'];
-  currentEpisodeNumber: HomeProps['currentEpisodeNumber'];
-  episodes: HomeProps['episodes'];
+  currentEpisodeNumber: EpisodePageProps['currentEpisodeNumber'];
+  episodes: EpisodePageProps['episodes'];
 };
 
 export const Episode = (props: EpisodeProps) => {

@@ -3,12 +3,12 @@ import {
   ArrowCircleRightIcon,
 } from '@heroicons/react/solid';
 import Link from 'next/link';
-import { HomeProps } from '../pages/episodes/[slug]';
+import { EpisodePageProps } from '../pages/episodes/[slug]';
 import { EpisodeType } from '../utils/episodes-handlers';
 
 type NavigationProps = {
   listOfEpisodes: Array<EpisodeType>;
-  currentEpisode: HomeProps['currentEpisodeNumber'];
+  currentEpisode: EpisodePageProps['currentEpisodeNumber'];
 };
 
 export const Navigation = (props: NavigationProps) => {

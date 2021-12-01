@@ -1,7 +1,7 @@
 import type { GetStaticProps } from 'next';
 import { getEpisodes } from '../utils/episodes-handlers';
 
-const Home = () => {
+const EpisodePage = () => {
   return null;
 };
 
@@ -14,4 +14,4 @@ export const getStaticProps: GetStaticProps = context => {
   };
 };
 
-export default Home;
+export default EpisodePage;

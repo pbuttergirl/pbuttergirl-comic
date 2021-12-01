@@ -9,7 +9,7 @@ export function getEpisodes() {
   return Object.entries(groupedList).map(([key, value]) => {
     return {
       name: (key.charAt(0).toUpperCase() + key.slice(1)).replace('-', ' '),
-      images: value.map(item => item.replace('public/', '')),
+      images: value.map(item => item.replace('./public/', '/')),
     };
   });
 }

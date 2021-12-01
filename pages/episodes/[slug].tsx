@@ -4,13 +4,13 @@ import React from 'react';
 import { Episode } from '../../components/episode';
 import { EpisodeType, getEpisodes } from '../../utils/episodes-handlers';
 
-export type HomeProps = {
+export type EpisodePageProps = {
   episode: EpisodeType;
   currentEpisodeNumber: number;
   episodes: Array<EpisodeType>;
 };
 
-const Home: NextPage<HomeProps> = props => {
+const EpisodePage: NextPage<EpisodePageProps> = props => {
   const {
     episode: { name, images },
     currentEpisodeNumber,
@@ -51,4 +51,4 @@ export const getServerSideProps: GetServerSideProps = async context => {
   }
 };
 
-export default Home;
+export default EpisodePage;
