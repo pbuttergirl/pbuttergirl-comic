@@ -4,16 +4,19 @@
 
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import Home from '../pages/index';
+import Home from '../pages/episodes/[slug]';
 import { getEpisodes } from '../utils/episodes-handlers';
 
 describe('Home', () => {
   it('renders a heading', () => {
-    const firstEpisode = getEpisodes()[0]['images'][0];
-    render(<Home name={'Episode x'} images={[firstEpisode]} />);
+    const episode = getEpisodes()[0];
+    const episodes = getEpisodes();
+    render(
+      <Home episode={episode} currentEpisodeNumber={1} episodes={episodes} />
+    );
 
     const heading = screen.getByRole('heading', {
-      name: /Episode x/i,
+      name: /Episode 1/i,
     });
 
     const image = screen.getByTestId('comic-image');
