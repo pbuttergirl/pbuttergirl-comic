@@ -2,3 +2,7 @@
   command = "next build"
   functions = "netlify/functions"
   publish = "out"
+
+[functions]
+  # Includes all episodes from public filder
+  included_files = ["public/**/*"]
