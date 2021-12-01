@@ -4,8 +4,8 @@ import { getEpisodes } from '../utils/episodes-handlers';
 
 describe('Navigation', () => {
   it('renders both arrows', () => {
-    const listOfEpisodes = getEpisodes();
-    render(<Navigation listOfEpisodes={listOfEpisodes} currentEpisode={3} />);
+    const episodes = getEpisodes();
+    render(<Navigation episodes={episodes} currentEpisode={3} />);
 
     const leftArrow = screen.getByTestId('left-arrow');
     const rightArrow = screen.getByTestId('right-arrow');
@@ -16,8 +16,8 @@ describe('Navigation', () => {
 
   describe('Right arrow', () => {
     it('redirects to the next episode', () => {
-      const listOfEpisodes = getEpisodes();
-      render(<Navigation listOfEpisodes={listOfEpisodes} currentEpisode={3} />);
+      const episodes = getEpisodes();
+      render(<Navigation episodes={episodes} currentEpisode={3} />);
 
       const rightArrow = screen.getByTestId('right-arrow') as HTMLAnchorElement;
       expect(rightArrow.href).toContain('/episodes/4');
@@ -26,8 +26,8 @@ describe('Navigation', () => {
 
   describe('Left arrow', () => {
     it('redirects to the previous episode', () => {
-      const listOfEpisodes = getEpisodes();
-      render(<Navigation listOfEpisodes={listOfEpisodes} currentEpisode={3} />);
+      const episodes = getEpisodes();
+      render(<Navigation episodes={episodes} currentEpisode={3} />);
 
       const leftArrow = screen.getByTestId('left-arrow') as HTMLAnchorElement;
       expect(leftArrow.href).toContain('/episodes/2');
@@ -35,8 +35,8 @@ describe('Navigation', () => {
   });
 
   it('does not render left arrow', () => {
-    const listOfEpisodes = getEpisodes();
-    render(<Navigation listOfEpisodes={listOfEpisodes} currentEpisode={1} />);
+    const episodes = getEpisodes();
+    render(<Navigation episodes={episodes} currentEpisode={1} />);
 
     const leftArrow = screen.queryByTestId('left-arrow');
     const rightArrow = screen.getByTestId('right-arrow');
@@ -46,8 +46,8 @@ describe('Navigation', () => {
   });
 
   it('does not render right arrow', () => {
-    const listOfEpisodes = getEpisodes();
-    render(<Navigation listOfEpisodes={listOfEpisodes} currentEpisode={5} />);
+    const episodes = getEpisodes();
+    render(<Navigation episodes={episodes} currentEpisode={5} />);
 
     const leftArrow = screen.getByTestId('left-arrow');
     const rightArrow = screen.queryByTestId('right-arrow');

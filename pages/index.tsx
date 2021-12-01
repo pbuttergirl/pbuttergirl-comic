@@ -1,15 +1,16 @@
-import type { GetStaticProps } from 'next';
+import type { GetServerSideProps } from 'next';
 import { getEpisodes } from '../utils/episodes-handlers';
 
 const EpisodePage = () => {
   return null;
 };
 
-export const getStaticProps: GetStaticProps = context => {
+export const getServerSideProps: GetServerSideProps = async context => {
   return {
     redirect: {
       destination: `/episodes/${getEpisodes().length}`,
       permanent: false,
+      fallback: true,
     },
   };
 };

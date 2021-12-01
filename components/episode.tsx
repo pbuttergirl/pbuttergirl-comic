@@ -21,10 +21,7 @@ export const Episode = (props: EpisodeProps) => {
       {images.map(image => {
         return <ComicImage key={JSON.stringify(image)} imagePath={image} />;
       })}
-      <Navigation
-        listOfEpisodes={episodes}
-        currentEpisode={currentEpisodeNumber}
-      />
+      <Navigation episodes={episodes} currentEpisode={currentEpisodeNumber} />
     </div>
   );
 };

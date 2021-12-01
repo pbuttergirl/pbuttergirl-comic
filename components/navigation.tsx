@@ -7,20 +7,28 @@ import { EpisodePageProps } from '../pages/episodes/[slug]';
 import { EpisodeType } from '../utils/episodes-handlers';
 
 type NavigationProps = {
-  listOfEpisodes: Array<EpisodeType>;
+  episodes: Array<EpisodeType>;
   currentEpisode: EpisodePageProps['currentEpisodeNumber'];
 };
 
+const PreviousEpisodePath = (number: number) => {
+  return `/episodes/${number - 1}`;
+};
+
+const nextEpisodePath = (number: number) => {
+  return `/episodes/${number + 1}`;
+};
+
 export const Navigation = (props: NavigationProps) => {
-  const { listOfEpisodes, currentEpisode } = props;
+  const { episodes, currentEpisode } = props;
   const isFirstEpisode = currentEpisode === 1;
-  const isLastEpisode = currentEpisode === listOfEpisodes.length;
+  const isLastEpisode = currentEpisode === episodes.length;
 
   return (
     <div className={'flex flex-row space-x-16'}>
       <div>
         {!isFirstEpisode && (
-          <Link href={`/episodes/${currentEpisode - 1}`} passHref>
+          <Link href={PreviousEpisodePath(currentEpisode)} passHref>
             <a data-testid="left-arrow">
               <ArrowCircleLeftIcon className="h-10 w-10 text-black-500" />
             </a>
@@ -30,7 +38,7 @@ export const Navigation = (props: NavigationProps) => {
       <div>Episode {currentEpisode}</div>
       <div>
         {!isLastEpisode && (
-          <Link href={`/episodes/${currentEpisode + 1}`} passHref>
+          <Link href={nextEpisodePath(currentEpisode)} passHref>
             <a data-testid="right-arrow">
               <ArrowCircleRightIcon className="h-10 w-10 text-black-500" />
             </a>
