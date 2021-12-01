@@ -4,8 +4,5 @@
   publish = "out"
 
 [functions]
-  # Sets a custom directory for Netlify Functions
-  directory = "myfunctions/"
-
-  # Includes all Markdown files inside the "files/" directory.
+  # Includes all episodes from public filder
   included_files = ["public/**/*"]

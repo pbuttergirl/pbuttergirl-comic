@@ -11,12 +11,16 @@ type NavigationProps = {
   currentEpisode: EpisodePageProps['currentEpisodeNumber'];
 };
 
+const episodePath = (number: number) => {
+  return `/episodes/${number}`;
+};
+
 const previousEpisodePath = (number: number) => {
-  return `/episodes/${number - 1}`;
+  return episodePath(number - 1);
 };
 
 const nextEpisodePath = (number: number) => {
-  return `/episodes/${number + 1}`;
+  return episodePath(number + 1);
 };
 
 export const Navigation = (props: NavigationProps) => {
