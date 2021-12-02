@@ -14,7 +14,7 @@ export const LastImageNavigation = () => {
 };
 
 const config = {
-  title: 'Navigtion',
+  title: 'Navigation',
   component: Navigation,
 };
 

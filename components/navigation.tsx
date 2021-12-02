@@ -11,6 +11,12 @@ type NavigationProps = {
   currentEpisode: EpisodePageProps['currentEpisodeNumber'];
 };
 
+type ArrowProps = {
+  currentEpisode: NavigationProps['currentEpisode'];
+  direction: 'left' | 'right';
+  disabled?: boolean;
+};
+
 const episodePath = (number: number) => {
   return `/episodes/${number}`;
 };
@@ -23,6 +29,31 @@ const nextEpisodePath = (number: number) => {
   return episodePath(number + 1);
 };
 
+export const Arrow = (props: ArrowProps) => {
+  const { currentEpisode, direction, disabled = false } = props;
+  const Icon =
+    direction === 'left' ? ArrowCircleLeftIcon : ArrowCircleRightIcon;
+
+  const path = direction === 'left' ? previousEpisodePath : nextEpisodePath;
+  const testId = `${direction}-arrow`;
+
+  if (disabled) {
+    return (
+      <a className="pointer-events-none" data-testid={testId}>
+        <Icon className={`h-5 w-5 sm:h-8 sm:w-8 text-black-500 opacity-25`} />
+      </a>
+    );
+  } else {
+    return (
+      <Link href={path(currentEpisode)} passHref>
+        <a data-testid={testId}>
+          <Icon className={`h-5 w-5 sm:h-8 sm:w-8 text-black-500`} />
+        </a>
+      </Link>
+    );
+  }
+};
+
 export const Navigation = (props: NavigationProps) => {
   const { episodes, currentEpisode } = props;
   const isFirstEpisode = currentEpisode === 1;
@@ -31,22 +62,17 @@ export const Navigation = (props: NavigationProps) => {
   return (
     <div className={'flex flex-row space-x-16'}>
       <div>
-        {!isFirstEpisode && (
-          <Link href={previousEpisodePath(currentEpisode)} passHref>
-            <a data-testid="left-arrow">
-              <ArrowCircleLeftIcon className="h-10 w-10 text-black-500" />
-            </a>
-          </Link>
+        {!isFirstEpisode ? (
+          <Arrow currentEpisode={currentEpisode} direction="left" />
+        ) : (
+          <Arrow disabled currentEpisode={currentEpisode} direction="left" />
         )}
       </div>
-      <div>Episode {currentEpisode}</div>
       <div>
-        {!isLastEpisode && (
-          <Link href={nextEpisodePath(currentEpisode)} passHref>
-            <a data-testid="right-arrow">
-              <ArrowCircleRightIcon className="h-10 w-10 text-black-500" />
-            </a>
-          </Link>
+        {!isLastEpisode ? (
+          <Arrow currentEpisode={currentEpisode} direction="right" />
+        ) : (
+          <Arrow disabled currentEpisode={currentEpisode} direction="right" />
         )}
       </div>
     </div>

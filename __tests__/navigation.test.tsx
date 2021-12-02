@@ -34,25 +34,25 @@ describe('Navigation', () => {
     });
   });
 
-  it('does not render left arrow', () => {
+  it('renders left arrow greyed', () => {
     const episodes = getEpisodes();
     render(<Navigation episodes={episodes} currentEpisode={1} />);
 
-    const leftArrow = screen.queryByTestId('left-arrow');
+    const leftArrow = screen.getByTestId('left-arrow');
     const rightArrow = screen.getByTestId('right-arrow');
 
-    expect(leftArrow).not.toBeInTheDocument();
+    expect(leftArrow.innerHTML).toContain('opacity-25');
     expect(rightArrow).toBeInTheDocument();
   });
 
-  it('does not render right arrow', () => {
+  it('renders right arrow greyed', () => {
     const episodes = getEpisodes();
     render(<Navigation episodes={episodes} currentEpisode={5} />);
 
     const leftArrow = screen.getByTestId('left-arrow');
-    const rightArrow = screen.queryByTestId('right-arrow');
+    const rightArrow = screen.getByTestId('right-arrow');
 
     expect(leftArrow).toBeInTheDocument();
-    expect(rightArrow).not.toBeInTheDocument();
+    expect(rightArrow.innerHTML).toContain('opacity-25');
   });
 });
