@@ -15,6 +15,10 @@ a {
   text-decoration: none;
 }
 
+a[href=''] {
+  pointer-events: none;
+}
+
 * {
   box-sizing: border-box;
 }
