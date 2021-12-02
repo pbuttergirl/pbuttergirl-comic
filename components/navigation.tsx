@@ -39,7 +39,7 @@ export const Arrow = (props: ArrowProps) => {
 
   if (disabled) {
     return (
-      <a data-testid={testId}>
+      <a className="pointer-events-none" data-testid={testId}>
         <Icon className={`h-5 w-5 sm:h-8 sm:w-8 text-black-500 opacity-25`} />
       </a>
     );
