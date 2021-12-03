@@ -1,8 +1,8 @@
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
 import Script from 'next/script';
-import * as gtag from '../analytics/gtag';
-import { useRouter } from 'next/dist/client/router';
+import * as gtag from '../utils/analytics/gtag';
+import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 
 function MyApp({ Component, pageProps }: AppProps) {

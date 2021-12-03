@@ -10,6 +10,5 @@
 [context.production]
   environment = {NEXT_PUBLIC_GA_ID="G-XR7FPCVM7N"}
 
-
 [context.deploy-preview]
   environment = {NEXT_PUBLIC_GA_ID="test"}
