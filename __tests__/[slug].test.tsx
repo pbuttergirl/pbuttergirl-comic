@@ -3,16 +3,21 @@
  */
 
 import React from 'react';
-import { render, screen } from '@testing-library/react';
-import Home from '../pages/episodes/[slug]';
+import { render, screen, waitFor } from '@testing-library/react';
+import EpisodePage from '../pages/episodes/[slug]';
 import { getEpisodes } from '../utils/episodes-handlers';
+import { Container } from 'react-bootstrap';
 
-describe('Home', () => {
+describe('EpisodePage', () => {
   it('renders a heading', () => {
     const episode = getEpisodes()[0];
     const episodes = getEpisodes();
     render(
-      <Home episode={episode} currentEpisodeNumber={1} episodes={episodes} />
+      <EpisodePage
+        episode={episode}
+        currentEpisodeNumber={1}
+        episodes={episodes}
+      />
     );
 
     const heading = screen.getByRole('heading', {
@@ -23,5 +28,21 @@ describe('Home', () => {
 
     expect(heading).toBeInTheDocument();
     expect(image).toBeInTheDocument();
+  });
+
+  it('renders a title', async () => {
+    const episode = getEpisodes()[0];
+    const episodes = getEpisodes();
+    const { container } = render(
+      <EpisodePage
+        episode={episode}
+        currentEpisodeNumber={1}
+        episodes={episodes}
+      />
+    );
+
+    await waitFor(() => {
+      expect(container.querySelector('head')).toMatchSnapshot();
+    });
   });
 });
