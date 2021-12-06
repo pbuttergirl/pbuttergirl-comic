@@ -1,6 +1,6 @@
 import React from 'react';
 import { EpisodePageProps } from '../pages/episodes/[slug]';
-import { EpisodeType, getEpisodes } from '../utils/episodes-handlers';
+import { EpisodeType } from '../utils/episodes-handlers';
 import { ComicImage } from './image';
 import { Navigation } from './navigation';
 import { TextComponentProps } from './text';

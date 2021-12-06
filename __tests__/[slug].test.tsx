@@ -4,17 +4,24 @@
 
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import Home from '../pages/episodes/[slug]';
+import EpisodePage from '../pages/episodes/[slug]';
 import { getEpisodes } from '../utils/episodes-handlers';
+import { Helmet } from 'react-helmet';
 
-describe('Home', () => {
-  it('renders a heading', () => {
+describe('EpisodePage', () => {
+  beforeEach(() => {
     const episode = getEpisodes()[0];
     const episodes = getEpisodes();
     render(
-      <Home episode={episode} currentEpisodeNumber={1} episodes={episodes} />
+      <EpisodePage
+        episode={episode}
+        currentEpisodeNumber={1}
+        episodes={episodes}
+      />
     );
+  });
 
+  it('renders a heading', () => {
     const heading = screen.getByRole('heading', {
       name: /Episode 1/i,
     });
@@ -23,5 +30,18 @@ describe('Home', () => {
 
     expect(heading).toBeInTheDocument();
     expect(image).toBeInTheDocument();
+  });
+
+  it('renders a title', async () => {
+    const helmet = Helmet.peek();
+
+    expect(helmet.title).toEqual(['Episode 1', ' - Peanutbutter girl comic']);
+  });
+
+  it('renders meta tags', () => {
+    const helmet = Helmet.peek();
+    const metaTags = helmet.metaTags;
+
+    expect(metaTags).toEqual([{ name: 'description', content: 'Episode 1' }]);
   });
 });

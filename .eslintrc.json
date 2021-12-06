@@ -3,6 +3,10 @@
   "rules": {
     "@next/next/no-img-element": "off",
     "jsx-a11y/role-has-required-aria-props": "off",
-    "no-console": ["error", { "allow": ["warn", "error"] }]
+    "no-console": ["error", { "allow": ["warn", "error"] }],
+    "no-unused-vars": [
+      "error",
+      { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }
+    ]
   }
 }
