@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import EpisodePage from '../pages/episodes/[slug]';
 import { getEpisodes } from '../utils/episodes-handlers';
 import { Helmet } from 'react-helmet';
