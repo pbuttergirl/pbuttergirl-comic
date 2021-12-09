@@ -12,4 +12,16 @@ describe('getEpisodes', () => {
       images: ['/episodes/episode-1/Episode1.png'],
     });
   });
+
+  it('returns images of episode-4 sorted alphabetically', () => {
+    const episodes = getEpisodes();
+    expect(episodes[3]).toEqual({
+      name: 'Episode 4',
+      images: [
+        '/episodes/episode-4/1-KissMaker+2000.png',
+        '/episodes/episode-4/2-Work.png',
+        '/episodes/episode-4/3-Room.png',
+      ],
+    });
+  });
 });
