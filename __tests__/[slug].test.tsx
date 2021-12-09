@@ -4,9 +4,13 @@
 
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import EpisodePage from '../pages/episodes/[slug]';
+import EpisodePage, {
+  getServerSideProps,
+  Params,
+} from '../pages/episodes/[slug]';
 import { getEpisodes } from '../utils/episodes-handlers';
 import { Helmet } from 'react-helmet';
+import { GetServerSidePropsContext } from 'next';
 
 describe('EpisodePage', () => {
   beforeEach(() => {
@@ -43,5 +47,49 @@ describe('EpisodePage', () => {
     const metaTags = helmet.metaTags;
 
     expect(metaTags).toEqual([{ name: 'description', content: 'Episode 1' }]);
+  });
+
+  describe('getServerSideProps method', () => {
+    it('returns props if episode exists', async () => {
+      const context = {
+        params: {
+          slug: '5',
+        },
+      };
+
+      const result = await getServerSideProps(
+        context as GetServerSidePropsContext<Params>
+      );
+
+      expect(result).toEqual({
+        props: {
+          episode: {
+            name: 'Episode 5',
+            images: ['/episodes/episode-5/Episode-5.png'],
+          },
+          currentEpisodeNumber: 5,
+          episodes: getEpisodes(),
+        },
+      });
+    });
+
+    it('returns episode if episode does not exist', async () => {
+      const context = {
+        params: {
+          slug: 'non-existing',
+        },
+      };
+
+      const result = await getServerSideProps(
+        context as GetServerSidePropsContext<Params>
+      );
+
+      expect(result).toEqual({
+        redirect: {
+          destination: '/',
+          permanent: false,
+        },
+      });
+    });
   });
 });

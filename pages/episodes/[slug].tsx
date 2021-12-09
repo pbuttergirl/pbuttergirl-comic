@@ -10,6 +10,10 @@ export type EpisodePageProps = {
   episodes: Array<EpisodeType>;
 };
 
+export type Params = {
+  slug: string;
+};
+
 const EpisodePage: NextPage<EpisodePageProps> = props => {
   const {
     episode: { name, images },
@@ -33,22 +37,23 @@ const EpisodePage: NextPage<EpisodePageProps> = props => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async context => {
-  const currentEpisodeNumber = parseInt(context.params!.slug as string);
-  const episodes = getEpisodes();
-  const episode = episodes[currentEpisodeNumber - 1];
-  if (episode) {
-    return {
-      props: { episode, currentEpisodeNumber, episodes },
-    };
-  } else {
-    return {
-      redirect: {
-        destination: '/',
-        permanent: false,
-      },
-    };
-  }
-};
+export const getServerSideProps: GetServerSideProps<EpisodePageProps, Params> =
+  async context => {
+    const currentEpisodeNumber = parseInt(context.params!.slug);
+    const episodes = getEpisodes();
+    const episode = episodes[currentEpisodeNumber - 1];
+    if (episode) {
+      return {
+        props: { episode, currentEpisodeNumber, episodes },
+      };
+    } else {
+      return {
+        redirect: {
+          destination: '/',
+          permanent: false,
+        },
+      };
+    }
+  };
 
 export default EpisodePage;
