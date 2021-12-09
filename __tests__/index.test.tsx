@@ -1,3 +1,4 @@
+import { render } from '@testing-library/react';
 import { GetServerSidePropsContext } from 'next';
 import { Params } from '../pages/episodes/[slug]';
 import EpisodePage, { getServerSideProps } from '../pages/index';
@@ -5,8 +6,8 @@ import { getEpisodes } from '../utils/episodes-handlers';
 
 describe('EpisodePage', () => {
   it('returns null', () => {
-    const result = EpisodePage();
-    expect(result).toBe(null);
+    const { container } = render(<EpisodePage />);
+    expect(container.firstChild).toBeNull();
   });
 });
 
