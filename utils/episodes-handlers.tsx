@@ -7,9 +7,10 @@ export function getEpisodes() {
   const episodes = glob.sync('./public/episodes/episode-*/*.png');
   const groupedList = groupBy(episodes, groupFunction);
   return Object.entries(groupedList).map(([key, value]) => {
+    const images = value.map(item => item.replace('./public/', '/')).sort();
     return {
       name: (key.charAt(0).toUpperCase() + key.slice(1)).replace('-', ' '),
-      images: value.map(item => item.replace('./public/', '/')),
+      images,
     };
   });
 }
