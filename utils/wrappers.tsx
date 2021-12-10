@@ -1,16 +1,17 @@
 import initHeadManager from 'next/dist/client/head-manager';
 import { HeadManagerContext } from 'next/dist/shared/lib/head-manager-context';
 import { useEffect } from 'react';
+import ReactDOMServer from 'react-dom/server';
 
 export const HeadWrapper: React.FC = props => {
   const { children } = props;
   const manager = initHeadManager();
 
   useEffect(() => {
-    const meta = document.createElement('meta');
-    meta.content = '0';
-    meta.name = 'next-head-count';
-    document.getElementsByTagName('head')[0].appendChild(meta);
+    global.document.head.insertAdjacentHTML(
+      'afterbegin',
+      ReactDOMServer.renderToString(<meta name="next-head-count" content="0" />)
+    );
   });
 
   return (
