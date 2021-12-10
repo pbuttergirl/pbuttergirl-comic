@@ -54,6 +54,28 @@ describe('EpisodePage', () => {
     });
   });
 
+  it('renders a meta description', async () => {
+    const episode = getEpisodes()[0];
+    const episodes = getEpisodes();
+
+    render(
+      <EpisodePage
+        episode={episode}
+        currentEpisodeNumber={1}
+        episodes={episodes}
+      />,
+      { wrapper: HeadWrapper }
+    );
+
+    await waitFor(() => {
+      expect(
+        document
+          .querySelector('meta[name=description]')
+          ?.getAttribute('content')
+      ).toEqual('Episode 1');
+    });
+  });
+
   describe('getServerSideProps method', () => {
     it('returns props if episode exists', async () => {
       const context = {
