@@ -3,14 +3,14 @@
  */
 
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import EpisodePage, {
   getServerSideProps,
   Params,
 } from '../pages/episodes/[slug]';
 import { getEpisodes } from '../utils/episodes-handlers';
-import { Helmet } from 'react-helmet';
 import { GetServerSidePropsContext } from 'next';
+import { HeadWrapper } from '../utils/wrappers';
 
 describe('EpisodePage', () => {
   beforeEach(() => {
@@ -37,16 +37,21 @@ describe('EpisodePage', () => {
   });
 
   it('renders a title', async () => {
-    const helmet = Helmet.peek();
+    const episode = getEpisodes()[0];
+    const episodes = getEpisodes();
 
-    expect(helmet.title).toEqual(['Episode 1', ' - Peanutbutter girl comic']);
-  });
+    render(
+      <EpisodePage
+        episode={episode}
+        currentEpisodeNumber={1}
+        episodes={episodes}
+      />,
+      { wrapper: HeadWrapper }
+    );
 
-  it('renders meta tags', () => {
-    const helmet = Helmet.peek();
-    const metaTags = helmet.metaTags;
-
-    expect(metaTags).toEqual([{ name: 'description', content: 'Episode 1' }]);
+    await waitFor(() => {
+      expect(document.title).toEqual('Episode 1 - Peanutbutter girl comic');
+    });
   });
 
   describe('getServerSideProps method', () => {

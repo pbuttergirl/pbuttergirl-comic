@@ -1,5 +1,5 @@
 import type { GetServerSideProps, NextPage } from 'next';
-import { Helmet } from 'react-helmet';
+import Head from 'next/head';
 import React from 'react';
 import { Episode } from '../../components/episode';
 import { EpisodeType, getEpisodes } from '../../utils/episodes-handlers';
@@ -22,11 +22,11 @@ const EpisodePage: NextPage<EpisodePageProps> = props => {
   } = props;
   return (
     <div className={'max-w-screen'}>
-      <Helmet>
+      <Head>
         <title>{name} - Peanutbutter girl comic</title>
         <meta name="description" content={name} />
         <link rel="icon" href="/favicon.ico" />
-      </Helmet>
+      </Head>
       <Episode
         title={name}
         images={images}
