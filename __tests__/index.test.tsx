@@ -1,17 +1,9 @@
-import { render } from '@testing-library/react';
-import { GetServerSidePropsContext } from 'next';
+import { GetStaticPropsContext } from 'next';
 import { Params } from '../pages/episodes/[slug]';
-import EpisodePage, { getServerSideProps } from '../pages/index';
+import { getStaticProps } from '../pages/index';
 import { getEpisodes } from '../utils/episodes-handlers';
 
-describe('EpisodePage', () => {
-  it('returns null', () => {
-    const { container } = render(<EpisodePage />);
-    expect(container.firstChild).toBeNull();
-  });
-});
-
-describe('getServerSideProps', () => {
+describe('getStaticProps', () => {
   it('redirects to the last episode', async () => {
     const context = {
       params: {
@@ -19,17 +11,19 @@ describe('getServerSideProps', () => {
       },
     };
 
-    const result = await getServerSideProps(
-      context as GetServerSidePropsContext<Params>
+    const result = await getStaticProps(
+      context as GetStaticPropsContext<Params>
     );
 
-    const lastEpisode = getEpisodes().length;
-
     expect(result).toEqual({
-      redirect: {
-        destination: `/episodes/${lastEpisode}`,
-        permanent: false,
-        fallback: true,
+      props: {
+        episode: {
+          slug: '5',
+          name: 'Episode 5',
+          images: ['/episodes/episode-5/Episode-5.png'],
+        },
+        currentEpisodeNumber: 5,
+        episodes: getEpisodes(),
       },
     });
   });
