@@ -39,11 +39,11 @@ const EpisodePage: NextPage<EpisodePageProps> = props => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const episodes = getEpisodes();
-  const episodeSlugs = episodes.map(episode => {
-    return episode.episodeSlug;
+  const slugs = episodes.map(episode => {
+    return episode.slug;
   });
 
-  const paths = episodeSlugs.map(slug => {
+  const paths = slugs.map(slug => {
     return {
       params: {
         slug,

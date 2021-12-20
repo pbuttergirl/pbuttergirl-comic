@@ -18,7 +18,7 @@ describe('getStaticProps', () => {
     expect(result).toEqual({
       props: {
         episode: {
-          episodeSlug: '5',
+          slug: '5',
           name: 'Episode 5',
           images: ['/episodes/episode-5/Episode-5.png'],
         },

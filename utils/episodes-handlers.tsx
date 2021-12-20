@@ -9,9 +9,9 @@ export function getEpisodes() {
 
   return Object.entries(groupedList).map(([key, value], index) => {
     const images = value.map(item => item.replace('./public/', '/')).sort();
-    const episodeSlug = (index + 1).toString();
+    const slug = (index + 1).toString();
     return {
-      episodeSlug,
+      slug,
       name: (key.charAt(0).toUpperCase() + key.slice(1)).replace('-', ' '),
       images,
     };
