@@ -38,8 +38,7 @@ const EpisodePage: NextPage<EpisodePageProps> = props => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const episodes = getEpisodes();
-  const slugs = episodes.map(episode => {
+  const slugs = getEpisodes().map(episode => {
     return episode.slug;
   });
 
