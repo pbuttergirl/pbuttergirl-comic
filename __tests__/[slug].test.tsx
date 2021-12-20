@@ -124,9 +124,9 @@ describe('EpisodePage', () => {
 
   describe('getStaticPaths', () => {
     it('returns pre-defined route for first episode', async () => {
-      const resultPaths = (await getStaticPaths({})).paths[0];
+      const resultPath = (await getStaticPaths({})).paths[0];
 
-      expect(resultPaths).toEqual({ params: { slug: '1' } });
+      expect(resultPath).toEqual({ params: { slug: '1' } });
     });
   });
 });
