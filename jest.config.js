@@ -4,16 +4,17 @@ module.exports = {
     'components/**/*.{ts,tsx}',
     'pages/**/*.{ts,tsx}',
     'utils/**/*.{ts,tsx}',
+    '!pages/_app.tsx',
     '!**/*.d.ts',
     '!**/node_modules/**',
   ],
 
   coverageThreshold: {
     global: {
-      branches: 65,
-      functions: 65,
-      lines: 65,
-      statements: 65,
+      branches: 90,
+      functions: 90,
+      lines: 90,
+      statements: 90,
     },
   },
 

@@ -5,11 +5,12 @@
 import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import EpisodePage, {
-  getServerSideProps,
+  getStaticPaths,
+  getStaticProps,
   Params,
 } from '../pages/episodes/[slug]';
 import { getEpisodes } from '../utils/episodes-handlers';
-import { GetServerSidePropsContext } from 'next';
+import { GetStaticPropsContext } from 'next';
 import { HeadWrapper } from '../utils/wrappers';
 
 describe('EpisodePage', () => {
@@ -76,7 +77,7 @@ describe('EpisodePage', () => {
     });
   });
 
-  describe('getServerSideProps method', () => {
+  describe('getStaticProps method', () => {
     it('returns props if episode exists', async () => {
       const context = {
         params: {
@@ -84,13 +85,14 @@ describe('EpisodePage', () => {
         },
       };
 
-      const result = await getServerSideProps(
-        context as GetServerSidePropsContext<Params>
+      const result = await getStaticProps(
+        context as GetStaticPropsContext<Params>
       );
 
       expect(result).toEqual({
         props: {
           episode: {
+            episodeSlug: '5',
             name: 'Episode 5',
             images: ['/episodes/episode-5/Episode-5.png'],
           },
@@ -107,8 +109,8 @@ describe('EpisodePage', () => {
         },
       };
 
-      const result = await getServerSideProps(
-        context as GetServerSidePropsContext<Params>
+      const result = await getStaticProps(
+        context as GetStaticPropsContext<Params>
       );
 
       expect(result).toEqual({
@@ -117,6 +119,14 @@ describe('EpisodePage', () => {
           permanent: false,
         },
       });
+    });
+  });
+
+  describe('getStaticPaths', () => {
+    it('returns pre-defined route for first episode', async () => {
+      const resultPaths = (await getStaticPaths({})).paths[0];
+
+      expect(resultPaths).toEqual({ params: { slug: '1' } });
     });
   });
 });

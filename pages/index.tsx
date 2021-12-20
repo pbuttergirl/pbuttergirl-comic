@@ -1,17 +1,14 @@
-import type { GetServerSideProps } from 'next';
+import type { GetStaticProps } from 'next';
 import { getEpisodes } from '../utils/episodes-handlers';
+import EpisodePage, { EpisodePageProps, Params } from './episodes/[slug]';
 
-const EpisodePage = () => {
-  return null;
-};
+export const getStaticProps: GetStaticProps<EpisodePageProps, Params> = () => {
+  const episodes = getEpisodes();
+  const currentEpisodeNumber = episodes.length;
+  const lastEpisode = episodes[currentEpisodeNumber - 1];
 
-export const getServerSideProps: GetServerSideProps = async () => {
   return {
-    redirect: {
-      destination: `/episodes/${getEpisodes().length}`,
-      permanent: false,
-      fallback: true,
-    },
+    props: { episode: lastEpisode, currentEpisodeNumber, episodes },
   };
 };
 

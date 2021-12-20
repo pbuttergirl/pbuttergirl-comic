@@ -1,4 +1,4 @@
-import type { GetServerSideProps, NextPage } from 'next';
+import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 import React from 'react';
 import { Episode } from '../../components/episode';
@@ -37,9 +37,30 @@ const EpisodePage: NextPage<EpisodePageProps> = props => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps<EpisodePageProps, Params> =
+export const getStaticPaths: GetStaticPaths = async () => {
+  const episodes = getEpisodes();
+  const episodeSlugs = episodes.map(episode => {
+    return episode.episodeSlug;
+  });
+
+  const paths = episodeSlugs.map(slug => {
+    return {
+      params: {
+        slug,
+      },
+    };
+  });
+
+  return {
+    paths,
+    fallback: false,
+  };
+};
+
+export const getStaticProps: GetStaticProps<EpisodePageProps, Params> =
   async context => {
-    const currentEpisodeNumber = parseInt(context.params!.slug);
+    const { params } = context;
+    const currentEpisodeNumber = parseInt(params!.slug);
     const episodes = getEpisodes();
     const episode = episodes[currentEpisodeNumber - 1];
     if (episode) {
