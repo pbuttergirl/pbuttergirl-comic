@@ -5,10 +5,10 @@ import EpisodePage, { EpisodePageProps, Params } from './episodes/[slug]';
 export const getStaticProps: GetStaticProps<EpisodePageProps, Params> = () => {
   const episodes = getEpisodes();
   const currentEpisodeNumber = episodes.length;
-  const lastEpisode = episodes[currentEpisodeNumber - 1];
+  const episode = episodes[currentEpisodeNumber - 1];
 
   return {
-    props: { episode: lastEpisode, currentEpisodeNumber, episodes },
+    props: { episode, currentEpisodeNumber, episodes },
   };
 };
 
