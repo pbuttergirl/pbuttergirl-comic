@@ -55,6 +55,12 @@ To check if the code is correctly formatted, use `Prettier`.
 yarn prettier-check
 ```
 
+To automatically fix the formatting issues, run the command:
+
+```bash
+yarn prettier-autofix
+```
+
 ### Development
 
 You can start development server and play around with the code.
