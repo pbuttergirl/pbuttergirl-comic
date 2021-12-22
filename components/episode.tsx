@@ -1,4 +1,3 @@
-import React from 'react';
 import { EpisodePageProps } from '../pages/episodes/[slug]';
 import { EpisodeType } from '../utils/episodes-handlers';
 import { ComicImage } from './image';
