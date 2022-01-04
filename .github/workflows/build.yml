@@ -56,6 +56,12 @@ jobs:
     name: Docker
     steps:
       - uses: actions/checkout@v2
+      - id: 'auth'
+      name: 'Authenticate to Google Cloud'
+      uses: 'google-github-actions/auth@v0'
+      with:
+        service_account: 'github@pbuttergirl.iam.gserviceaccount.com'
+        credentials_json: ${{secrets.GCLOUD_SERVICE_ACCOUNT_KEY}}
       - run: docker build -t gcr.io/pbuttergirl/comic .
 
 
