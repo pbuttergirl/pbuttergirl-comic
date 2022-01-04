@@ -52,6 +52,7 @@ jobs:
       - uses: bahmutov/npm-install@v1
       - run: yarn prettier-check 
   docker:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     name: Docker
     needs: [build, test, storybook, lint, prettier]
