@@ -63,6 +63,6 @@ jobs:
           service_account: 'github@pbuttergirl.iam.gserviceaccount.com'
           credentials_json: ${{secrets.GCLOUD_SERVICE_ACCOUNT_KEY}}
       - run: gcloud auth configure-docker -q
-      - run: docker build -t gcr.io/pbuttergirl/comic .
-
+      - run: docker build -t gcr.io/pbuttergirl/comic:${{github.sha}} .
+      - run: docker push gcr.io/pbuttergirl/comic:${{github.sha}}
 
