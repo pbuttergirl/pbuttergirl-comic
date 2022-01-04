@@ -51,3 +51,11 @@ jobs:
           node-version: "16"
       - uses: bahmutov/npm-install@v1
       - run: yarn prettier-check 
+  docker:
+    runs-on: ubuntu-latest
+    name: Docker
+    steps:
+      - uses: actions/checkout@v2
+      - run: docker build -t comic .
+
+
