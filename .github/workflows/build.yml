@@ -70,5 +70,6 @@ jobs:
         with:
           service: 'comic'
           image: 'gcr.io/pbuttergirl/comic:${{github.sha}}'
+          region: 'europe-west4'
 
 
