@@ -65,4 +65,10 @@ jobs:
       - run: gcloud auth configure-docker -q
       - run: docker build -t gcr.io/pbuttergirl/comic:${{github.sha}} .
       - run: docker push gcr.io/pbuttergirl/comic:${{github.sha}}
+      - id: 'deploy'
+        uses: 'google-github-actions/deploy-cloudrun@v0'
+        with:
+          service: 'comic'
+          image: 'gcr.io/pbuttergirl/comic:${{github.sha}}'
+
 
