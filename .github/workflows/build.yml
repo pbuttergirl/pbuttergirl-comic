@@ -51,3 +51,27 @@ jobs:
           node-version: "16"
       - uses: bahmutov/npm-install@v1
       - run: yarn prettier-check 
+  docker:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    name: Docker
+    needs: [build, test, storybook, lint, prettier]
+    steps:
+      - uses: actions/checkout@v2
+      - id: 'auth'
+        name: 'Authenticate to Google Cloud'
+        uses: 'google-github-actions/auth@v0'
+        with:
+          service_account: 'github@pbuttergirl.iam.gserviceaccount.com'
+          credentials_json: ${{secrets.GCLOUD_SERVICE_ACCOUNT_KEY}}
+      - run: gcloud auth configure-docker -q
+      - run: docker build -t gcr.io/pbuttergirl/comic:${{github.sha}} .
+      - run: docker push gcr.io/pbuttergirl/comic:${{github.sha}}
+      - id: 'deploy'
+        uses: 'google-github-actions/deploy-cloudrun@v0'
+        with:
+          service: 'comic'
+          image: 'gcr.io/pbuttergirl/comic:${{github.sha}}'
+          region: 'europe-west4'
+
+
