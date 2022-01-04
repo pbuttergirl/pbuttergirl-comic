@@ -56,6 +56,6 @@ jobs:
     name: Docker
     steps:
       - uses: actions/checkout@v2
-      - run: docker build -t comic .
+      - run: docker build -t gcr.io/pbuttergirl/comic .
 
 
