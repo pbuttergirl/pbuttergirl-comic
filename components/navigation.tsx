@@ -40,14 +40,14 @@ export const Arrow = (props: ArrowProps) => {
   if (disabled) {
     return (
       <a className="pointer-events-none" data-testid={testId}>
-        <Icon className={`h-5 w-5 sm:h-8 sm:w-8 text-black-500 opacity-25`} />
+        <Icon className={`h-7 w-7 sm:h-8 sm:w-8 text-black-500 opacity-25`} />
       </a>
     );
   } else {
     return (
       <Link href={path(currentEpisode)} passHref>
         <a data-testid={testId}>
-          <Icon className={`h-5 w-5 sm:h-8 sm:w-8 text-black-500`} />
+          <Icon className={`h-7 w-7 sm:h-8 sm:w-8 text-black-500`} />
         </a>
       </Link>
     );
