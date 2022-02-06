@@ -55,4 +55,38 @@ describe('Navigation', () => {
     expect(leftArrow).toBeInTheDocument();
     expect(rightArrow.innerHTML).toContain('opacity-25');
   });
+
+  it('checks aria label for first episde', () => {
+    const episodes = getEpisodes();
+    render(<Navigation episodes={episodes} currentEpisode={1} />);
+    const ariaLabelFirstEpisode = 'The first episode reached.';
+
+    const ariaLabelNextEpisode = 'Navigation to the next episode.';
+    const leftArrow = screen.getByTestId('left-arrow');
+    const rightArrow = screen.getByTestId('right-arrow');
+    // console.log(screen.debug());
+
+    expect(leftArrow).toHaveAttribute(
+      'aria-label',
+      expect.stringContaining(ariaLabelFirstEpisode)
+    );
+    expect(rightArrow).toHaveAttribute('aria-label', ariaLabelNextEpisode);
+  });
+
+  it('checks aria label for last episde', () => {
+    const episodes = getEpisodes();
+    render(<Navigation episodes={episodes} currentEpisode={5} />);
+    const ariaLabelLastEpisode = 'The last episode reached.';
+
+    const ariaLabelPreviousEpisode = 'Navigation to the previous episode.';
+    const leftArrow = screen.getByTestId('left-arrow');
+    const rightArrow = screen.getByTestId('right-arrow');
+    // console.log(screen.debug());
+
+    expect(leftArrow).toHaveAttribute('aria-label', ariaLabelPreviousEpisode);
+    expect(rightArrow).toHaveAttribute(
+      'aria-label',
+      expect.stringContaining(ariaLabelLastEpisode)
+    );
+  });
 });
