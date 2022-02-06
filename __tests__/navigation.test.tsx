@@ -81,7 +81,6 @@ describe('Navigation', () => {
     const ariaLabelPreviousEpisode = 'Navigation to the previous episode.';
     const leftArrow = screen.getByTestId('left-arrow');
     const rightArrow = screen.getByTestId('right-arrow');
-    // console.log(screen.debug());
 
     expect(leftArrow).toHaveAttribute('aria-label', ariaLabelPreviousEpisode);
     expect(rightArrow).toHaveAttribute(
