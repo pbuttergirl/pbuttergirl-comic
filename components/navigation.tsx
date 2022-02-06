@@ -36,17 +36,34 @@ export const Arrow = (props: ArrowProps) => {
 
   const path = direction === 'left' ? previousEpisodePath : nextEpisodePath;
   const testId = `${direction}-arrow`;
+  const navigationLabelLeft = 'Navigation to the previous episode.';
+  const navigationLabelRight = 'Navigation to the next episode.';
+  const buttonDisabledFirstEpisode = 'The first episode reached.';
+  const buttonDisabledLastEpisode = 'The last episode reached.';
 
   if (disabled) {
     return (
-      <a className="pointer-events-none" data-testid={testId}>
+      <a
+        className="pointer-events-none"
+        data-testid={testId}
+        aria-label={
+          direction === 'left'
+            ? `${buttonDisabledFirstEpisode} Button disabled - navigation impossible.`
+            : `${buttonDisabledLastEpisode} Button disabled - navigation impossible.`
+        }
+      >
         <Icon className={`h-7 w-7 sm:h-8 sm:w-8 text-black-500 opacity-25`} />
       </a>
     );
   } else {
     return (
       <Link href={path(currentEpisode)} passHref>
-        <a data-testid={testId}>
+        <a
+          data-testid={testId}
+          aria-label={
+            direction === 'left' ? navigationLabelLeft : navigationLabelRight
+          }
+        >
           <Icon className={`h-7 w-7 sm:h-8 sm:w-8 text-black-500`} />
         </a>
       </Link>
