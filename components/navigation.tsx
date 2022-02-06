@@ -39,14 +39,23 @@ export const Arrow = (props: ArrowProps) => {
 
   if (disabled) {
     return (
-      <a className="pointer-events-none" data-testid={testId}>
+      <a
+        className="pointer-events-none"
+        data-testid={testId}
+        // aria-label={
+        //   'The first or lat episode reached. Button disabled - navigation impossible.'
+        // }
+      >
         <Icon className={`h-7 w-7 sm:h-8 sm:w-8 text-black-500 opacity-25`} />
       </a>
     );
   } else {
     return (
       <Link href={path(currentEpisode)} passHref>
-        <a data-testid={testId}>
+        <a
+          data-testid={testId}
+          aria-label={'Navigation to the next of previous episode.'}
+        >
           <Icon className={`h-7 w-7 sm:h-8 sm:w-8 text-black-500`} />
         </a>
       </Link>

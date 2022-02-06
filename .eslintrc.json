@@ -2,7 +2,6 @@
   "extends": "next/core-web-vitals",
   "rules": {
     "@next/next/no-img-element": "off",
-    "jsx-a11y/role-has-required-aria-props": "off",
     "no-console": ["error", { "allow": ["warn", "error"] }],
     "no-unused-vars": [
       "error",
