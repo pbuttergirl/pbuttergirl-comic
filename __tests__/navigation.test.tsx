@@ -58,13 +58,12 @@ describe('Navigation', () => {
 
   it('checks aria label for first episde', () => {
     const episodes = getEpisodes();
-    render(<Navigation episodes={episodes} currentEpisode={1} />);
     const ariaLabelFirstEpisode = 'The first episode reached.';
-
     const ariaLabelNextEpisode = 'Navigation to the next episode.';
+
+    render(<Navigation episodes={episodes} currentEpisode={1} />);
     const leftArrow = screen.getByTestId('left-arrow');
     const rightArrow = screen.getByTestId('right-arrow');
-    // console.log(screen.debug());
 
     expect(leftArrow).toHaveAttribute(
       'aria-label',
@@ -75,10 +74,10 @@ describe('Navigation', () => {
 
   it('checks aria label for last episde', () => {
     const episodes = getEpisodes();
-    render(<Navigation episodes={episodes} currentEpisode={5} />);
     const ariaLabelLastEpisode = 'The last episode reached.';
-
     const ariaLabelPreviousEpisode = 'Navigation to the previous episode.';
+
+    render(<Navigation episodes={episodes} currentEpisode={5} />);
     const leftArrow = screen.getByTestId('left-arrow');
     const rightArrow = screen.getByTestId('right-arrow');
 
