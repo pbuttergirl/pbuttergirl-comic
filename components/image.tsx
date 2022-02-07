@@ -9,7 +9,7 @@ export const ComicImage = (props: ComicImageProps) => {
       <img
         src={imagePath}
         alt={
-          'Image of comic episode. The main character of the episode is young girl who is in love with peanut butter'
+          'The main character of the series is young girl who is in love with peanut butter'
         }
       />
     </div>

@@ -38,27 +38,20 @@ export const Arrow = (props: ArrowProps) => {
   const testId = `${direction}-arrow`;
   const navigationLabelLeft = 'Navigation to the previous episode.';
   const navigationLabelRight = 'Navigation to the next episode.';
-  const buttonDisabledFirstEpisode = 'The first episode reached.';
-  const buttonDisabledLastEpisode = 'The last episode reached.';
 
   if (disabled) {
     return (
-      <a
-        className="pointer-events-none"
-        data-testid={testId}
-        aria-label={
-          direction === 'left'
-            ? `${buttonDisabledFirstEpisode} Button disabled - navigation impossible.`
-            : `${buttonDisabledLastEpisode} Button disabled - navigation impossible.`
-        }
-      >
+      // relate issue: https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/issues/805
+      // eslint-disable-next-line jsx-a11y/role-supports-aria-props
+      <div data-testid={testId} role={'navigation'} aria-disabled={true}>
         <Icon className={`h-7 w-7 sm:h-8 sm:w-8 text-black-500 opacity-25`} />
-      </a>
+      </div>
     );
   } else {
     return (
       <Link href={path(currentEpisode)} passHref>
         <a
+          href={path(currentEpisode)}
           data-testid={testId}
           aria-label={
             direction === 'left' ? navigationLabelLeft : navigationLabelRight
