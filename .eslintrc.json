@@ -1,5 +1,5 @@
 {
-  "extends": "next/core-web-vitals",
+  "extends": ["next/core-web-vitals", "plugin:jsx-a11y/recommended"],
   "rules": {
     "@next/next/no-img-element": "off",
     "no-console": ["error", { "allow": ["warn", "error"] }],
@@ -7,5 +7,6 @@
       "error",
       { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }
     ]
-  }
+  },
+  "plugins": ["jsx-a11y"]
 }
