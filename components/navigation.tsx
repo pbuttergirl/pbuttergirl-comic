@@ -44,7 +44,7 @@ export const Arrow = (props: ArrowProps) => {
       // relate issue: https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/issues/805
       // eslint-disable-next-line jsx-a11y/role-supports-aria-props
       <div data-testid={testId} role={'navigation'} aria-disabled={true}>
-        <Icon className={`h-7 w-7 sm:h-8 sm:w-8 text-black-500 opacity-25`} />
+        <Icon className={`text-black-500 h-7 w-7 opacity-25 sm:h-8 sm:w-8`} />
       </div>
     );
   } else {
@@ -57,7 +57,7 @@ export const Arrow = (props: ArrowProps) => {
             direction === 'left' ? navigationLabelLeft : navigationLabelRight
           }
         >
-          <Icon className={`h-7 w-7 sm:h-8 sm:w-8 text-black-500`} />
+          <Icon className={`text-black-500 h-7 w-7 sm:h-8 sm:w-8`} />
         </a>
       </Link>
     );
