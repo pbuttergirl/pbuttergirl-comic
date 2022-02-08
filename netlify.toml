@@ -4,7 +4,7 @@
   publish = ".next"
 
 [functions]
-  # Includes all episodes from public filder
+  # Includes all episodes from public folder
   included_files = ["public/**/*"]
 
 [context.production]
