@@ -15,7 +15,8 @@
     "prettier-autofix": "prettier --write ."
   },
   "resolutions": {
-    "node-fetch": "^2.6.7"
+    "node-fetch": "^2.6.7",
+    "trim-newlines": "^3.0.0"
   },
   "dependencies": {
     "@types/react-dom": "^17.0.11",
