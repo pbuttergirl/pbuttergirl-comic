@@ -10,7 +10,9 @@ describe('getEpisodes', () => {
     expect(episodes[0]).toEqual({
       slug: '1',
       name: 'Episode 1',
-      images: ['/episodes/episode-1/Episode1.png'],
+      images: [
+        { path: '/episodes/episode-1/Episode1.png', altText: 'First episode' },
+      ],
     });
   });
 
@@ -20,9 +22,12 @@ describe('getEpisodes', () => {
       slug: '4',
       name: 'Episode 4',
       images: [
-        '/episodes/episode-4/1-KissMaker+2000.png',
-        '/episodes/episode-4/2-Work.png',
-        '/episodes/episode-4/3-Room.png',
+        {
+          path: '/episodes/episode-4/1-KissMaker+2000.png',
+          altText: 'Forth episode',
+        },
+        { path: '/episodes/episode-4/2-Work.png', altText: 'Forth episode 2' },
+        { path: '/episodes/episode-4/3-Room.png', altText: 'Forth episode 3' },
       ],
     });
   });

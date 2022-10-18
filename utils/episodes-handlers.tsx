@@ -3,13 +3,30 @@ import { groupBy } from 'lodash';
 
 export type EpisodeType = ReturnType<typeof getEpisodes>[0];
 
+const altTexts = [
+  ['First episode'],
+  ['Second episode'],
+  ['Third episode'],
+  ['Forth episode', 'Forth episode 2', 'Forth episode 3'],
+  ['Fifth episode'],
+];
+
 export function getEpisodes() {
   const episodes = glob.sync('./public/episodes/episode-*/*.png');
   const groupedList = groupBy(episodes, groupFunction);
 
-  return Object.entries(groupedList).map(([key, value], index) => {
-    const images = value.map(item => item.replace('./public/', '/')).sort();
-    const slug = (index + 1).toString();
+  return Object.entries(groupedList).map(([key, value], episodeNumber) => {
+    const images = value
+      .map(item => item.replace('./public/', '/'))
+      .sort()
+      .map((image, imageIndex) => {
+        return {
+          path: image,
+          altText: altTexts[episodeNumber][imageIndex],
+        };
+      });
+
+    const slug = (episodeNumber + 1).toString();
     return {
       slug,
       name: (key.charAt(0).toUpperCase() + key.slice(1)).replace('-', ' '),

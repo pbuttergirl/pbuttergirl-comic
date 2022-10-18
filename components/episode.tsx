@@ -14,8 +14,7 @@ export type EpisodeProps = {
 
 export const Episode = (props: EpisodeProps) => {
   const { title, images, currentEpisodeNumber, episodes } = props;
-  const altText =
-    'First episode portrays a short-haired girl who is looking at the jar full of peanut butter. The jar is placed on the brown table. The girl says: Aww... we meet again my lady';
+
   return (
     <div className={'m-5 flex flex-col place-items-center gap-5'}>
       <Text title={title} />
@@ -23,8 +22,8 @@ export const Episode = (props: EpisodeProps) => {
         return (
           <ComicImage
             key={JSON.stringify(image)}
-            imagePath={image}
-            altText={altText}
+            imagePath={image.path}
+            altText={image.altText}
           />
         );
       })}
