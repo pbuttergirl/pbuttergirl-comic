@@ -4,17 +4,17 @@ import { getEpisodes } from '../utils/episodes-handlers';
 
 describe(Episode, () => {
   const episodes = getEpisodes();
-  it('renders first episode with alt text', () => {
-    const images = episodes.map(image => {
+  const getEpisodeFor = (imageIndex: number) => {
+    return episodes.map(image => {
       return image.images;
-    })[0];
+    })[imageIndex];
+  };
 
-    const title = 'Episode 1';
-
+  it('renders first episode with alt text', () => {
     const { getByText } = render(
       <Episode
-        title={title}
-        images={images}
+        title={'Episode 1'}
+        images={getEpisodeFor(0)}
         currentEpisodeNumber={1}
         episodes={episodes}
       />
@@ -23,16 +23,11 @@ describe(Episode, () => {
   });
 
   it('renders second episode with its alt attribute', () => {
-    const images = episodes.map(image => {
-      return image.images;
-    })[1];
-
-    const title = 'Episode 2';
     const altText = 'Second episode';
     render(
       <Episode
-        title={title}
-        images={images}
+        title={'Episode 2'}
+        images={getEpisodeFor(1)}
         currentEpisodeNumber={2}
         episodes={episodes}
       />
@@ -42,15 +37,11 @@ describe(Episode, () => {
   });
 
   it('renders third episode with its alt attribute', () => {
-    const images = episodes.map(image => {
-      return image.images;
-    })[2];
-    const title = 'Episode 3';
     const altText = 'Third episode';
     render(
       <Episode
-        title={title}
-        images={images}
+        title={'Episode 3'}
+        images={getEpisodeFor(2)}
         currentEpisodeNumber={3}
         episodes={episodes}
       />
