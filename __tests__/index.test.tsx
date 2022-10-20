@@ -20,7 +20,12 @@ describe('getStaticProps', () => {
         episode: {
           slug: '5',
           name: 'Episode 5',
-          images: ['/episodes/episode-5/Episode-5.png'],
+          images: [
+            {
+              path: '/episodes/episode-5/Episode-5.png',
+              altText: 'Fifth episode',
+            },
+          ],
         },
         currentEpisodeNumber: 5,
         episodes: getEpisodes(),

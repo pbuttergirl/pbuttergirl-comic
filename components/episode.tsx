@@ -14,11 +14,18 @@ export type EpisodeProps = {
 
 export const Episode = (props: EpisodeProps) => {
   const { title, images, currentEpisodeNumber, episodes } = props;
+
   return (
     <div className={'m-5 flex flex-col place-items-center gap-5'}>
       <Text title={title} />
       {images.map(image => {
-        return <ComicImage key={JSON.stringify(image)} imagePath={image} />;
+        return (
+          <ComicImage
+            key={JSON.stringify(image)}
+            imagePath={image.path}
+            altText={image.altText}
+          />
+        );
       })}
       <Navigation episodes={episodes} currentEpisode={currentEpisodeNumber} />
     </div>
