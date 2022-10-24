@@ -1,6 +1,7 @@
 import { GetStaticPropsContext } from 'next';
 import { Params } from '../pages/episodes/[slug]';
 import { getStaticProps } from '../pages/index';
+import { altTexts } from '../utils/episode-descriptions';
 import { getEpisodes } from '../utils/episodes-handlers';
 
 describe('getStaticProps', () => {
@@ -23,7 +24,7 @@ describe('getStaticProps', () => {
           images: [
             {
               path: '/episodes/episode-5/Episode-5.png',
-              altText: 'Fifth episode',
+              altText: altTexts[4][0],
             },
           ],
         },

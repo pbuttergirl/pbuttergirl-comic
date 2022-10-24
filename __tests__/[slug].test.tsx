@@ -12,6 +12,7 @@ import EpisodePage, {
 import { getEpisodes } from '../utils/episodes-handlers';
 import { GetStaticPropsContext } from 'next';
 import { HeadWrapper } from '../utils/wrappers';
+import { altTexts } from '../utils/episode-descriptions';
 
 describe('EpisodePage', () => {
   beforeEach(() => {
@@ -97,7 +98,7 @@ describe('EpisodePage', () => {
             images: [
               {
                 path: '/episodes/episode-5/Episode-5.png',
-                altText: 'Fifth episode',
+                altText: altTexts[4][0],
               },
             ],
           },
