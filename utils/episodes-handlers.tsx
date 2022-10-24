@@ -1,15 +1,8 @@
 import glob from 'glob';
 import { groupBy } from 'lodash';
+import { altTexts } from './episode-descriptions';
 
 export type EpisodeType = ReturnType<typeof getEpisodes>[0];
-
-const altTexts = [
-  ['First episode'],
-  ['Second episode'],
-  ['Third episode'],
-  ['Forth episode', 'Forth episode 2', 'Forth episode 3'],
-  ['Fifth episode'],
-];
 
 export function getEpisodes() {
   const episodes = glob.sync('./public/episodes/episode-*/*.png');

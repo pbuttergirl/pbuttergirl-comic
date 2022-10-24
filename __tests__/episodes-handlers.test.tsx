@@ -2,6 +2,7 @@
  * @jest-environment jsdom
  */
 
+import { altTexts } from '../utils/episode-descriptions';
 import { getEpisodes } from '../utils/episodes-handlers';
 
 describe('getEpisodes', () => {
@@ -11,7 +12,7 @@ describe('getEpisodes', () => {
       slug: '1',
       name: 'Episode 1',
       images: [
-        { path: '/episodes/episode-1/Episode1.png', altText: 'First episode' },
+        { path: '/episodes/episode-1/Episode1.png', altText: altTexts[0][0] },
       ],
     });
   });
