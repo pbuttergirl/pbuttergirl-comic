@@ -27,8 +27,8 @@ describe('getEpisodes', () => {
           path: '/episodes/episode-4/1-KissMaker+2000.png',
           altText: altTexts[3][0],
         },
-        { path: '/episodes/episode-4/2-Work.png', altText: 'Forth episode 2' },
-        { path: '/episodes/episode-4/3-Room.png', altText: 'Forth episode 3' },
+        { path: '/episodes/episode-4/2-Work.png', altText: altTexts[3][1] },
+        { path: '/episodes/episode-4/3-Room.png', altText: altTexts[3][2] },
       ],
     });
   });

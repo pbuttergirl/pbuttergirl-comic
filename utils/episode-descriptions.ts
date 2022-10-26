@@ -10,8 +10,8 @@ export const altTexts = [
   ],
   [
     "Digital art. The image shows a blueprint of a solution called 'Kissmaker 2000' that Peanut butter girl wants to build. According to the design, the device is a long stick that is attached to the waist with a belt and is so long and properly twisted that its end is at the level of the face. At the end of this stick is mounted mistletoe. In the left part of the project you can see the formula for the integral. In the lower right corner there is a red, filled heart, and next to the heart there is a red, unfilled mouth. The blueprint is on the brown table.",
-    'Forth episode 2',
-    'Forth episode 3',
+    "Digital art. The picture shows the girl Peanut butter who is building the 'Kissmaker 2000'. The girl has long, brown loose hair. The girl is very focused on work. In the upper right corner of the picture there is a speech bubble saying: 'Almost there ...' In the lower right corner you can see two springs and three nuts. The background of the picture is pink.",
+    "Digital art. The picture shows a Peanut butter girl who is standing in a room whose walls and floor are pale red. The girl is wearing a red knee-length dress with an open back. Her long brown hair is pulled up in a loose ponytail. The girl has the 'Kissmaker 2000' attached. At its end hangs a mistletoe with a red heart-shaped bow. The girl is standing in front of the brown door leading to a room called 'Sexi People Room'.",
   ],
   [
     "Digital art. The picture shows a girl wearing a yellow long-sleeved blouse and black leggings. Her hair is brown in a ponytail. The eyes are also brown. The girl is wearing orange headphones. The girl is dancing. Her left arm is stretched out in front of her and her right arm is placed on the waist. The background of the picture is blue. In the upper right corner there is a speech bubble with the word 'Dance' and its phonetic transcription. The flag of Great Britain is drawn in the lower right corner.",
