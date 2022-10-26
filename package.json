@@ -14,7 +14,8 @@
     "prettier-check": "prettier --check .",
     "prettier-autofix": "prettier --write .",
     "check-types": "tsc --noEmit",
-    "check-types-watch": "tsc --noEmit --watch"
+    "check-types-watch": "tsc --noEmit --watch",
+    "test-debug": "node --inspect-brk node_modules/.bin/jest --runInBand --watch"
   },
   "resolutions": {
     "node-fetch": "^2.6.7",
