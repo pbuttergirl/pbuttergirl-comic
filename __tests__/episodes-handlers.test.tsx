@@ -25,7 +25,7 @@ describe('getEpisodes', () => {
       images: [
         {
           path: '/episodes/episode-4/1-KissMaker+2000.png',
-          altText: 'Forth episode',
+          altText: altTexts[3][0],
         },
         { path: '/episodes/episode-4/2-Work.png', altText: 'Forth episode 2' },
         { path: '/episodes/episode-4/3-Room.png', altText: 'Forth episode 3' },
