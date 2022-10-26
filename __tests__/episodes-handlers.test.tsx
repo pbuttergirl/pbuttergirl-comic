@@ -2,6 +2,7 @@
  * @jest-environment jsdom
  */
 
+import { altTexts } from '../utils/episode-descriptions';
 import { getEpisodes } from '../utils/episodes-handlers';
 
 describe('getEpisodes', () => {
@@ -11,7 +12,7 @@ describe('getEpisodes', () => {
       slug: '1',
       name: 'Episode 1',
       images: [
-        { path: '/episodes/episode-1/Episode1.png', altText: 'First episode' },
+        { path: '/episodes/episode-1/Episode1.png', altText: altTexts[0][0] },
       ],
     });
   });
@@ -24,10 +25,10 @@ describe('getEpisodes', () => {
       images: [
         {
           path: '/episodes/episode-4/1-KissMaker+2000.png',
-          altText: 'Forth episode',
+          altText: altTexts[3][0],
         },
-        { path: '/episodes/episode-4/2-Work.png', altText: 'Forth episode 2' },
-        { path: '/episodes/episode-4/3-Room.png', altText: 'Forth episode 3' },
+        { path: '/episodes/episode-4/2-Work.png', altText: altTexts[3][1] },
+        { path: '/episodes/episode-4/3-Room.png', altText: altTexts[3][2] },
       ],
     });
   });

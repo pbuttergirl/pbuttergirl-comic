@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { Episode } from '../components/episode';
+import { altTexts } from '../utils/episode-descriptions';
 import { getEpisodes } from '../utils/episodes-handlers';
 
 describe(Episode, () => {
@@ -23,7 +24,7 @@ describe(Episode, () => {
   });
 
   it('renders second episode with its alt attribute', () => {
-    const altText = 'Second episode';
+    const altText = altTexts[1][0];
     render(
       <Episode
         title={'Episode 2'}
@@ -37,7 +38,7 @@ describe(Episode, () => {
   });
 
   it('renders third episode with its alt attribute', () => {
-    const altText = 'Third episode';
+    const altText = altTexts[2][0];
     render(
       <Episode
         title={'Episode 3'}

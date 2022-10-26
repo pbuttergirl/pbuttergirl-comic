@@ -70,7 +70,7 @@ export const Navigation = (props: NavigationProps) => {
   const isLastEpisode = currentEpisode === episodes.length;
 
   return (
-    <div className={'flex flex-row space-x-16'}>
+    <nav className={'flex flex-row space-x-16'}>
       <div>
         {!isFirstEpisode ? (
           <Arrow currentEpisode={currentEpisode} direction="left" />
@@ -85,6 +85,6 @@ export const Navigation = (props: NavigationProps) => {
           <Arrow disabled currentEpisode={currentEpisode} direction="right" />
         )}
       </div>
-    </div>
+    </nav>
   );
 };
