@@ -3,15 +3,16 @@
  */
 
 import React from 'react';
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import EpisodePage, {
+  getMetaDescription,
   getStaticPaths,
   getStaticProps,
+  getTitle,
   Params,
 } from '../pages/episodes/[slug]';
 import { getEpisodes } from '../utils/episodes-handlers';
 import { GetStaticPropsContext } from 'next';
-import { HeadWrapper } from '../utils/wrappers';
 import { altTexts } from '../utils/episode-descriptions';
 
 describe('EpisodePage', () => {
@@ -38,44 +39,16 @@ describe('EpisodePage', () => {
     expect(image).toBeInTheDocument();
   });
 
-  it('renders a title', async () => {
+  it('renders a title of first episode', () => {
     const episode = getEpisodes()[0];
-    const episodes = getEpisodes();
-
-    render(
-      <EpisodePage
-        episode={episode}
-        currentEpisodeNumber={1}
-        episodes={episodes}
-      />,
-      { wrapper: HeadWrapper }
-    );
-
-    await waitFor(() => {
-      expect(document.title).toEqual('Episode 1 - Peanutbutter girl comic');
-    });
+    const result = getTitle(episode.name);
+    expect(result).toEqual('Episode 1 - Peanutbutter girl comic');
   });
 
-  it('renders a meta description', async () => {
+  it('renders a meta description of first episode', async () => {
     const episode = getEpisodes()[0];
-    const episodes = getEpisodes();
-
-    render(
-      <EpisodePage
-        episode={episode}
-        currentEpisodeNumber={1}
-        episodes={episodes}
-      />,
-      { wrapper: HeadWrapper }
-    );
-
-    await waitFor(() => {
-      expect(
-        document
-          .querySelector('meta[name=description]')
-          ?.getAttribute('content')
-      ).toEqual('Episode 1');
-    });
+    const result = getMetaDescription(episode.name);
+    expect(result).toEqual('Episode 1');
   });
 
   describe('getStaticProps method', () => {
