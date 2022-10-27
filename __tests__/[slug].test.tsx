@@ -41,13 +41,13 @@ describe('EpisodePage', () => {
 
   it('renders a title of first episode', () => {
     const episode = getEpisodes()[0];
-    const result = getTitle(episode.name);
+    const result = getTitle(episode);
     expect(result).toEqual('Episode 1 - Peanutbutter girl comic');
   });
 
   it('renders a meta description of first episode', async () => {
     const episode = getEpisodes()[0];
-    const result = getMetaDescription(episode.name);
+    const result = getMetaDescription(episode);
     expect(result).toEqual('Episode 1');
   });
 
