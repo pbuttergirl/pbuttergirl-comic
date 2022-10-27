@@ -13,9 +13,17 @@ export type EpisodePageProps = {
 export type Params = {
   slug: string;
 };
+export const getTitle = (episode: EpisodeType) => {
+  return `${episode.name} - Peanutbutter girl comic`;
+};
+
+export const getMetaDescription = (episode: EpisodeType) => {
+  return episode.name;
+};
 
 const EpisodePage: NextPage<EpisodePageProps> = props => {
   const {
+    episode,
     episode: { name, images },
     currentEpisodeNumber,
     episodes,
@@ -23,8 +31,8 @@ const EpisodePage: NextPage<EpisodePageProps> = props => {
   return (
     <div className={'max-w-screen'}>
       <Head>
-        <title>{name} - Peanutbutter girl comic</title>
-        <meta name="description" content={name} />
+        <title>{getTitle(episode)}</title>
+        <meta name="description" content={getMetaDescription(episode)} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Episode
